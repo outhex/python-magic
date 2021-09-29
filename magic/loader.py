@@ -1,4 +1,5 @@
 from ctypes.util import find_library
+from getpass import getuser
 import ctypes
 import sys
 import glob
@@ -14,6 +15,7 @@ def _lib_candidates():
       '/opt/local/lib',
       '/usr/local/lib',
       '/opt/homebrew/lib',
+      '/Users/{current_user}/homebrew/lib'.format(current_user=getuser())
     ] + glob.glob('/usr/local/Cellar/libmagic/*/lib')
 
     for i in paths:
